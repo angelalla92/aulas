@@ -77,7 +77,7 @@ class Aulas{
         $cn=new cn();
         $mysqli=$cn->cn;
         //Prepara una sentencia SQL para su ejecución
-        $stm=$mysqli->prepare("UPDATE aulas set aula=?, capacidad=?, tipSilla=?, tipEntrada=?,taburete=?,pizarra=?,proyector=?,pcAlumno=?,pcDocente=?,canPuertas=?,equVentilacion=?,observacion=?,estado=? where id=?");
+        $stm=$mysqli->prepare("call sp_pocede(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
          // Agrega variables a una sentencia preparada como parámetros
          $stm->bind_param("sisssssssisssi", $aulac, $capacidadc, $tipSillac, $tipEntradac,$taburetec,$pizarrac,$proyectorc,$pcAlumnoc,$pcDocentec,$canPuertasc,$equVentilacionc,$observacionc,$estadoc,$id);
          $stm->execute();
@@ -85,11 +85,20 @@ class Aulas{
         //  print_r($stm);
         //  exit;
         if($stm->error==""){
-            if($stm->affected_rows>0){
-                $res="aulitaactualizada";
+            $row = $stm->get_result();
+            $myrow=$row->fetch_assoc();
+            // $res=$myrow["id"];
+            if($myrow["id"]=="actualizado"){
+                $res="actualizado";
             }else{
-                $res="sin cambios";
+                $res=$myrow["id"];
             }
+            // if($stm->affected_rows>0){
+               
+            //     $res="aulitaactualizada";
+            // }else{
+            //     $res="sin cambios";
+            // }
         }else{
              $res=$stm->error;
          }

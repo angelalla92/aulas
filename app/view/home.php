@@ -14,13 +14,13 @@
 </head>
 <body>
     <!-- Botón normal -->   
-    <button type="button" class="btn btn-default" data-target="#exampleModal" data-toggle="modal">Insertar</button>
+    <button id="botoninsertar" type="button" class="btn btn-default" data-target="#exampleModal" data-toggle="modal">Insertar</button>
 
     <!-- Indica una acción exitosa o positiva -->
-    <button type="button" class="btn btn-success" data-target="#exampleModal" data-toggle="modal">actualizar</button>  
+    <!-- <button type="button" class="btn btn-success" data-target="#exampleModal" data-toggle="modal">actualizar</button>   -->
 
     <!-- Indica una acción negativa o potencialmente peligrosa -->
-    <button id="botonparaeliminar" type="button" class="btn btn-danger">Eliminar</button>
+    <!-- <button id="botonparaeliminar" type="button" class="btn btn-danger">Eliminar</button> -->
 
     <!-- Resta importancia al botón haciéndolo parecer un simple enlace,
         aunque conserva tu comportamiento original de botón -->
@@ -70,84 +70,81 @@
         </button>
       </div>
       <div class="modal-body">
-    
-      <form autocomplete="off" name="formactualiza" id="formactualiza" >           
-        <div class="form-row">           
-            <div class="form-group col-md-6">
-                <label>ID:</label>
-                <input type="text" class="form-control" name="idn" id="idi">
+      <!-- formulario     -->
+        <form autocomplete="off" name="formactualiza" id="formactualiza" >           
+            <div class="form-row">           
+                <div class="form-group col-md-6">
+                    <label>ID:</label>
+                    <input type="text" class="form-control" name="idn" id="idi" readonly="readonly">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>AULA:</label>
+                    <input type="text" class="form-control" name="aulan" id="aulai">
+                </div>            
             </div>
-            <div class="form-group col-md-6">
-                <label>AULA:</label>
-                <input type="text" class="form-control" name="aulan" id="aulai">
-            </div>            
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>CAPACIDAD:</label>
-                <input type="text" class="form-control" name="capan" id="capai">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>CAPACIDAD:</label>
+                    <input type="text" class="form-control" name="capan" id="capai">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>TIPO DE SILLA:</label>
+                    <input type="text" class="form-control" name="tsillan" id="tsillai">
+                </div>               
             </div>
-            <div class="form-group col-md-6">
-                <label>TIPO DE SILLA:</label>
-                <input type="text" class="form-control" name="tsillan" id="tsillai">
-            </div>               
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6"> 
-                <label>TIPO DE ENTRADA:</label>              
-               <input type="text" class="form-control"  name="tipen" id="tipei">
+            <div class="form-row">
+                <div class="form-group col-md-6"> 
+                    <label>TIPO DE ENTRADA:</label>              
+                <input type="text" class="form-control"  name="tipen" id="tipei">
+                </div>
+                <div class="form-group col-md-6"> 
+                    <label>TABURETE:</label>              
+                <input type="text" class="form-control"  name="tabureten" id="taburetei">
+                </div>           
             </div>
-            <div class="form-group col-md-6"> 
-                <label>TABURETE:</label>              
-               <input type="text" class="form-control"  name="tabureten" id="taburetei">
-            </div>           
-        </div>
-        <div class="form-row">            
-            <div class="form-group col-md-6"> 
-                <label>PIZARRA:</label>              
-               <input type="text" class="form-control"  name="pizan" id="pizi">
-            </div>
-            <div class="form-group col-md-6"> 
-                <label>PROYECTOR:</label>              
-               <input type="text" class="form-control"  name="pron" id="proi">
-            </div>
-        </div>        
-        <div class="row">            
-            <div class="col-sm-4"> 
-                <label>PC ALUMNO:</label>              
-               <input type="text" class="form-control col-md-11"  name="pcai" id="pcai">
-            </div>
-            <div class="form-group col-md-6"> 
-                <label>PC DOCENTE:</label>              
-               <input type="text" class="form-control"  name="pcdi" id="pcdi">
-            </div>
-        </div>  
-        <div class="form-row">            
-            <div class="form-group col-md-6"> 
-                <label>PUERTAS:</label>              
-               <input type="text" class="form-control"  name="puertasn" id="puertasi">
-            </div>
-            <div class="form-group col-md-6"> 
-                <label>VENTILACION:</label>              
-               <input type="text" class="form-control"  name="venn" id="veni">
-            </div>
-        </div>  
-        <div class="form-row">            
-            <div class="form-group col-md-6"> 
-                <label>OBSERVACION:</label>              
-               <input type="text" class="form-control"  name="obsen" id="obsei">
-            </div>
-            <div class="form-group col-md-6"> 
-                <label>ESTADO:</label>              
-               <input type="text" class="form-control"  name="estan" id="estai">
-            </div>
-        </div>  
-    </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btnactuar">Save changes</button>
-      </div>
+            <div class="form-row">            
+                <div class="form-group col-md-6"> 
+                    <label>PIZARRA:</label>              
+                <input type="text" class="form-control"  name="pizan" id="pizi">
+                </div>
+                <div class="form-group col-md-6"> 
+                    <label>PROYECTOR:</label>              
+                <input type="text" class="form-control"  name="pron" id="proi">
+                </div>
+            </div>        
+            <div class="row">            
+                <div class="col-sm-4"> 
+                    <label>PC ALUMNO:</label>              
+                <input type="text" class="form-control col-md-11"  name="pcai" id="pcai">
+                </div>
+                <div class="form-group col-md-6"> 
+                    <label>PC DOCENTE:</label>              
+                <input type="text" class="form-control"  name="pcdi" id="pcdi">
+                </div>
+            </div>  
+            <div class="form-row">            
+                <div class="form-group col-md-6"> 
+                    <label>PUERTAS:</label>              
+                <input type="text" class="form-control"  name="puertasn" id="puertasi">
+                </div>
+                <div class="form-group col-md-6"> 
+                    <label>VENTILACION:</label>              
+                <input type="text" class="form-control"  name="venn" id="veni">
+                </div>
+            </div>  
+            <div class="form-row">            
+                <div class="form-group col-md-6"> 
+                    <label>OBSERVACION:</label>              
+                <input type="text" class="form-control"  name="obsen" id="obsei">
+                </div>
+                <div class="form-group col-md-6"> 
+                    <label>ESTADO:</label>              
+                <input type="text" class="form-control"  name="estan" id="estai">
+                </div>
+            </div>  
+        </form>
+        <!-- formulario -->
+      </div>     
     </div>
   </div>
 </div>

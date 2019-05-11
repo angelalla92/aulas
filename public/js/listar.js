@@ -6,7 +6,7 @@ $(document).ready(function(){
     }).done(function(variable){
         // console.log(variable)
         $.each(variable,function(index,value){
-            console.log(value)
+            // console.log(value)
             $('#idmitablita').append(`<tr id=${value.id}>
             <td>${value.aula}</td>
             <td>${value.canPuerta}</td>
@@ -48,6 +48,7 @@ $(document).on('click', '#btn-eliminar', function(){
 })
 
 $(document).on('click', '#botonactualizador',function(){
+    $("#formactualiza").trigger("reset");
     var mejor=$(this).data('ida');
     console.log(mejor);
     $.ajax({
@@ -79,10 +80,13 @@ $(document).on('click', '#botonactualizador',function(){
     })
 })
 
-$('#btnactuar').on('click',function(a){
-    var id=$(this).data('actulizar')
+$('#botoninsertar').on('click',function(){
+    $("#formactualiza").trigger("reset");
 
-    var datos=$('#formactualiza').serialize();
+})
+
+$('#btnactuar').on('click',function(a){
+    var datos1=$('#formactualiza').serialize();
 
     var id=$('#idi').val();
     var aul=$('#aulai').val();
@@ -98,15 +102,15 @@ $('#btnactuar').on('click',function(a){
     var equVentilacio=$('#veni').val();
     var observacio=$('#obsei').val();
     var estad=$('#estai').val();
-
+    console.log(id);
     $.ajax({
         url: 'ajax/actualizar_aulitas.php',
         method: 'post',
-        data: datos
+        data: datos1
     }).done(function(respuest){
-        if(respuest=="aulitaactualizada"){
+        if(respuest=="actualizado"){
+            $('#exampleModal').modal("hide");      
             alert("actualizar aulas");
-            $('#exampleModal').modal("hide");
             $('#'+id).html(
                 `
                 <td>${aul}</td>           
@@ -128,8 +132,38 @@ $('#btnactuar').on('click',function(a){
                 <td><button type="button" class="btn btn-link">Reporte</button></td>    
                 `
             );
+            }else{
+                alert("Aula insertada");
+                $('#exampleModal').modal("hide");            
+                if(id==""){
+                    $('#idmitablita').append(`<tr id=${respuest}>
+                    <td>${aul}</td>           
+                        <td>${canPuerta}</td>
+                        <td>${capacida}</td>
+                        <td>${equVentilacio}</td>
+                        <td>${estad}</td>
+                        <td>${id}</td>
+                        <td>${observacio}</td>
+                        <td>${pcAlumn}</td>   
+                        <td>${pcDocent}</td>
+                        <td>${pizarr}</td>
+                        <td>${proyecto}</td>
+                        <td>${taburet}</td>   
+                        <td>${tipEntrad}</td> 
+                        <td>${tipSill}</td>
+                        <td><button id="botonactualizador" data-ida="${respuest}" class="btn btn-success" data-target="#exampleModal" data-toggle="modal">actualizar</button></td>           
+                        <td><button id="btn-eliminar" data-ide="${respuest}">Eliminar</button></td>    
+                        <td><button type="button" class="btn btn-link">Reporte</button></td>            
+                    </tr>
+                    `)
+               
+            }
+
+
         }
     })
+    // location.reload();
 })
-    
+
+
 
