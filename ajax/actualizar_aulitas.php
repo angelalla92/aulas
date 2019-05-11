@@ -1,9 +1,9 @@
 <?php
 require_once '../app/model/conexcion.php';
 require_once '../app/model/aulas.php';
-
+// print_r($_POST);
 $vactuadora = new Aulas();
-$objetoactuadora=$vactuadora->actualizar_aulas($_post['idi'],$_post['aulai'],$_post['capai'],$_post['tsillai'],$_post['tipei'],$_post['taburetei'],$_post['pizi'],$_post['proi'],$_post['pcai'],$_post['pcdi'],$_post['puertasi'],$_post['veni'],$_post['obsei'],$_post['estai']);
+$objetoactuadora=$vactuadora->actualizar_aulas($_POST['aulan'],$_POST['capan'],$_POST['tsillan'],$_POST['tipen'],$_POST['tabureten'],$_POST['pizan'],$_POST['pron'],$_POST['pcai'],$_POST['pcdi'],$_POST['puertasn'],$_POST['venn'],$_POST['obsen'],$_POST['estan'],$_POST['idn']);
 echo $objetoactuadora;
 
 ?>

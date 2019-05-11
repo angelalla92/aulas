@@ -21,7 +21,7 @@ class Aulas{
     public function listar_aulas(){
         $cn=new Cn();
         $mysqli=$cn->cn;
-        $stm=$mysqli->prepare("select * from aulas");        
+        $stm=$mysqli->prepare("select * from aulas");    
         $stm->execute();
         $array=[];
         if($stm->error=='')
@@ -51,46 +51,50 @@ class Aulas{
             echo $stm->error;
         }
         return "eliminadito";
-
     }
     public function listar_aulas_id($id){
         $cn = new cn();
         $mysqli=$cn->cn;
         //Prepara una sentencia SQL para su ejecución
-        $stm=$mysqli->prepare("select from aulas where id=?");
+        $stm=$mysqli->prepare("select * from aulas where id=?");
+        $stm->bind_param("i",$id);
         $stm->execute();
         $array=[];
-        if($stm->error=''){
+        if($stm->error==''){
             $rs = $stm->get_result();
             while($myrow = $rs->fetch_assoc()){
                 $array[]=$myrow;
             } 
             $resultado=$array;
         }else{
-            $resultado = $stm->errror;
+            $resultado = $stm->error;
         }
         $pjson=json_encode($resultado);
         return $pjson;
 
     }
-    public function actualizar_aulas($id, $aulac, $capacidadc, $tipSillac, $tipEntradac,$taburetec,$pizarrac,$proyectorc,$pcAlumnoc,$pcDocentec,$canPuertasc,$equVentilacionc,$observacionc,$estadoc){
+    public function actualizar_aulas( $aulac, $capacidadc, $tipSillac, $tipEntradac,$taburetec,$pizarrac,$proyectorc,$pcAlumnoc,$pcDocentec,$canPuertasc,$equVentilacionc,$observacionc,$estadoc,$id){
         $cn=new cn();
         $mysqli=$cn->cn;
         //Prepara una sentencia SQL para su ejecución
-        $stm=$mysqli->prepare("UPDATE aulas set  id=?, aula=?, capacidad=?, tipSilla=?, tipEntrada=?,taburete=?,pizarra=?,proyector=?,pcAlumno?,pcDocente?,canPuertas=?,equVentilacion=?,observacion=?,estado=?");
+        $stm=$mysqli->prepare("UPDATE aulas set aula=?, capacidad=?, tipSilla=?, tipEntrada=?,taburete=?,pizarra=?,proyector=?,pcAlumno=?,pcDocente=?,canPuertas=?,equVentilacion=?,observacion=?,estado=? where id=?");
          // Agrega variables a una sentencia preparada como parámetros
-         $stm->bind_param("sssssssssssss",$id, $aulac, $capacidadc, $tipSillac, $tipEntradac,$taburetec,$pizarrac,$proyectorc,$pcAlumnoc,$pcDocentec,$canPuertasc,$equVentilacionc,$observacionc,$estadoc);
+         $stm->bind_param("sisssssssisssi", $aulac, $capacidadc, $tipSillac, $tipEntradac,$taburetec,$pizarrac,$proyectorc,$pcAlumnoc,$pcDocentec,$canPuertasc,$equVentilacionc,$observacionc,$estadoc,$id);
          $stm->execute();
          //preguntar a Aarónn
-         if($stm->afected_row>0){
-             $res="aulitaactualizada";
-         }else{
+        //  print_r($stm);
+        //  exit;
+        if($stm->error==""){
+            if($stm->affected_rows>0){
+                $res="aulitaactualizada";
+            }else{
+                $res="sin cambios";
+            }
+        }else{
              $res=$stm->error;
          }
-         return $res;
-            
-    }
- 
+         return $res;  
+    } 
 }
 
 ?>

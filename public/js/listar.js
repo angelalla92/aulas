@@ -49,7 +49,7 @@ $(document).on('click', '#btn-eliminar', function(){
 
 $(document).on('click', '#botonactualizador',function(){
     var mejor=$(this).data('ida');
-
+    console.log(mejor);
     $.ajax({
         url: 'ajax/recuperar_datos.php',
         method: 'POST',
@@ -84,20 +84,20 @@ $('#btnactuar').on('click',function(a){
 
     var datos=$('#formactualiza').serialize();
 
-    var $id=$('#idi').val();
-    var $aul=$('#aulai').val();
-    var $capacida=$('#capai').val();
-    var $tipSill=$('#tsillai').val(); 
-    var $tipEntrad=$('#tipei').val(); 
-    var $taburet=$('#taburetei').val();  
-    var $pizarr=$('#pizi').val();
-    var $proyecto=$('#proi').val();
-    var $pcAlumn=$('#pcai').val();
-    var $pcDocent=$('#pcdi').val();
-    var $canPuerta=$('#puertasi').val();
-    var $equVentilacio=$('#veni').val();
-    var $observacio=$('#obsei').val();
-    var $estad=$('#estai').val();
+    var id=$('#idi').val();
+    var aul=$('#aulai').val();
+    var capacida=$('#capai').val();
+    var tipSill=$('#tsillai').val(); 
+    var tipEntrad=$('#tipei').val(); 
+    var taburet=$('#taburetei').val();  
+    var pizarr=$('#pizi').val();
+    var proyecto=$('#proi').val();
+    var pcAlumn=$('#pcai').val();
+    var pcDocent=$('#pcdi').val();
+    var canPuerta=$('#puertasi').val();
+    var equVentilacio=$('#veni').val();
+    var observacio=$('#obsei').val();
+    var estad=$('#estai').val();
 
     $.ajax({
         url: 'ajax/actualizar_aulitas.php',
@@ -117,14 +117,14 @@ $('#btnactuar').on('click',function(a){
                 <td>${id}</td>
                 <td>${observacio}</td>
                 <td>${pcAlumn}</td>   
-                <td>${pcAlumn}</td>
+                <td>${pcDocent}</td>
                 <td>${pizarr}</td>
                 <td>${proyecto}</td>
                 <td>${taburet}</td>   
                 <td>${tipEntrad}</td> 
                 <td>${tipSill}</td>
-                <td><button id="botonactualizador" data-ida="${value.id}" class="btn btn-success" data-target="#exampleModal" data-toggle="modal">actualizar</button></td>           
-                <td><button id="btn-eliminar" data-ide="${value.id}">Eliminar</button></td>    
+                <td><button id="botonactualizador" data-ida="${id}" class="btn btn-success" data-target="#exampleModal" data-toggle="modal">actualizar</button></td>           
+                <td><button id="btn-eliminar" data-ide="${id}">Eliminar</button></td>    
                 <td><button type="button" class="btn btn-link">Reporte</button></td>    
                 `
             );
