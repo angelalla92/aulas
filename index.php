@@ -5,9 +5,9 @@ if(isset($_GET['url'])){
         case 'home': 
         include './app/view/home.php';
         break;
-        case 'home2': 
-        include '../ajax/listar_aulas.php';
-        break;
+        // case 'home2': 
+        // include './ajax/listar_aulas.php';
+        // break;
 
         default:
         echo "ERROR 404";

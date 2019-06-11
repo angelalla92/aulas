@@ -142,6 +142,10 @@
                 <input type="text" class="form-control"  name="estan" id="estai">
                 </div>
             </div>  
+            <div class="modal-footer">            
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnactuar" >Save changes</button>
+            </div>
         </form>
         <!-- formulario -->
       </div>     

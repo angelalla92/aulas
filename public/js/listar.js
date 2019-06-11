@@ -4,7 +4,7 @@ $(document).ready(function(){
         url: 'ajax/listar_aulas.php',
         dataType: 'json',        
     }).done(function(variable){
-        // console.log(variable)
+        console.log(variable)
         $.each(variable,function(index,value){
             // console.log(value)
             $('#idmitablita').append(`<tr id=${value.id}>

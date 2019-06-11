@@ -10,7 +10,7 @@ Class Cn{
         $this->host="localhost";
         $this->db="aulas";
         $this->user="root";
-        $this->pass="";
+        $this->pass="123456";
         $this->cn=new mysqli($this->host,$this->user,$this->pass,$this->db);
 
         $this->cn->set_charset("utf8");
